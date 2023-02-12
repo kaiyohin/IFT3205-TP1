@@ -20,7 +20,7 @@
 /*------------------------------------------------*/
 /* DEFINITIONS -----------------------------------*/   
 /*------------------------------------------------*/
-#define NAME_VISUALISER "display "
+#define NAME_VISUALISER "gwenview "
 #define NAME_IMG_IN  "photograph"
 #define NAME_IMG_OUT "image-TpIFT3205-2-2"
 
@@ -63,19 +63,34 @@ void applyLog(float ** MatriceImgM, int length, int width) {
     }
 }
 
+
 void filter(float ** MatriceImgR, float ** MatriceImgI, int length, int width) {
     int center_length = length%2==0 ? length/2 : length/2+1;
     int center_width = width%2==0 ? width/2 : width/2+1;
-    int epsilon = 30;
+    float val1 = MatriceImgR[center_length-2][center_width-1];
+    float val2 = MatriceImgI[center_length-2][center_width-1];
+    float val3 = MatriceImgR[center_length+2][center_width+1];
+    float val4 = MatriceImgI[center_length+2][center_width+1];
     for (int i=0; i<length; i++) {
         for (int j=0; j<width; j++) {
-            MatriceImgR[i][j]=0;
-            MatriceImgI[i][j]=0;
+            if (sqrtf(powf(i-center_length, 2) + powf(j-center_width, 2)) > 2) {
+                MatriceImgR[i][j]=0;
+                MatriceImgI[i][j]=0;
+            } else {
+                MatriceImgR[i][j]=MatriceImgR[i][j]*0.01;
+                MatriceImgI[i][j]=MatriceImgI[i][j]*0.01;
+            }
         }
     }
+    MatriceImgR[center_length-2][center_width-1]=val1;
+    MatriceImgI[center_length-2][center_width-1]=val1;
 
-    MatriceImgR[center_length-2][center_width-1]=255;
-    MatriceImgI[center_length-2][center_width-1]=255;
+
+
+    MatriceImgR[center_length+2][center_width+1]=val3;
+    MatriceImgI[center_length+2][center_width+1]=val4;
+
+
 
 }
 
