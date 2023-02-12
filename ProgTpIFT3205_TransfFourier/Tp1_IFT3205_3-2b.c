@@ -1,8 +1,9 @@
 /*------------------------------------------------------*/
-/* Prog    : Tp1_IFT3205-1-1.c                          */
-/* Auteur  :                                            */
+/* Prog    : Tp1_IFT3205-3-2b.c                          */
+/* Auteur  :  Loïc Daudé Mondet (20243814)  Adel Abdeladim (20127626)  adel.abdeladim@umontreal.ca   */
+/* Emails  :  loic.daude.mondet@umontreal.ca   adel.abdeladim@umontreal.ca  */
 /* Date    : 18/05/2010                                 */
-/* version :                                            */ 
+/* version :                                            */
 /* langage : C                                          */
 /* labo    : DIRO                                       */
 /*------------------------------------------------------*/
